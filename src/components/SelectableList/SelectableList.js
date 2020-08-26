@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from "react";
 
 function Selectablelist(props) {
-  // const [fetchingData, setLoading] = useState(true);
-  // const [fetchingError, setError] = useState(false);
-  // const [data, setData] = useState(null);
-  const listItems = props.data.map((d) => <li key={d.Country}>{d.Country}</li>);
+  const [selectedItem, selectItem] = useState(props.data[1]);
+  const handleChange = (e) => {
+    selectItem(e.target.textContent);
+  };
+  const listItems = props.data.map((d, i) => (
+    <li className="listItem" onClick={(e) => handleChange(e)} key={i}>
+      {d}
+    </li>
+  ));
+
+  useEffect(() => {
+    props.getSelection(selectedItem);
+  });
+
   return (
     <div className="item-list">
       <ul>{listItems}</ul>
