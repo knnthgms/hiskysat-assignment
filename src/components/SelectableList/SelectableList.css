@@ -1,8 +1,9 @@
 .item-list {
   width: 200px;
   overflow: auto;
+  margin-left: 15px;
 }
-li.listItem {
+.listItem {
   display: block;
   padding: 10px 15px;
   text-overflow: ellipsis;
@@ -12,11 +13,16 @@ li.listItem {
   border-radius: 3px;
   color: #147efb;
 }
-li.listItem:hover {
+.listItem:hover {
   background-color: whitesmoke;
   color: #147efb;
 }
 .selected {
   background-color: #147efb !important;
   color: white !important;
+}
+.title {
+  font-size: 22px;
+  border-bottom: 1px solid grey;
+  padding: 10px 25px;
 }

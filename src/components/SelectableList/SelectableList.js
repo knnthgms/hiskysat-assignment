@@ -6,13 +6,13 @@ function SelectableList(props) {
     selectItem(e.target.textContent);
   };
   const listItems = props.data.map((d, i) => (
-    <li
+    <div
       className={`listItem ${d === props.default ? "selected" : ""}`}
       onClick={(e) => handleChange(e)}
       key={i}
     >
       <span>{d}</span>
-    </li>
+    </div>
   ));
 
   useEffect(() => {
@@ -20,8 +20,9 @@ function SelectableList(props) {
   });
 
   return (
-    <div className="item-list">
-      <ul>{listItems}</ul>
+    <div className="list">
+      <div className="title">{props.listType}</div>
+      <div className="item-list">{listItems}</div>
     </div>
   );
 }

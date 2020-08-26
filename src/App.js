@@ -36,10 +36,16 @@ function App() {
   const sortedCompanies = Object.entries(groupedCompany).map((e) => e[0]);
   const [selectedCompany, setCompany] = useState(sortedCompanies[0]);
 
+  const [selectedCompanyData, setCompanyData] = useState(
+    companiesInSelectedCity.filter((a) => a.City === selectedCity)[0]
+  );
+
   useEffect(() => {
-    // setCity(sortedCities[0]);
-    // setCompany(sortedCompanies[0]);
-  });
+    let newCountryCompany = companiesInSelectedCity.filter(
+      (a) => a.City === selectedCity
+    )[0];
+    if (newCountryCompany) setCompanyData(newCountryCompany);
+  }, [companiesInSelectedCity, selectedCity]);
 
   return (
     <div className="App">
@@ -62,7 +68,8 @@ function App() {
           getSelection={(company) => setCompany(company)}
           listType={"CompanyName"}
         />
-        <MapDisplay />
+        {!selectedCompanyData && <span>no map data</span>}
+        <MapDisplay details={selectedCompanyData} />
       </div>
     </div>
   );
