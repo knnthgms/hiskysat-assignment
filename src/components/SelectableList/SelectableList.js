@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
-
-function Selectablelist(props) {
-  const selectedKey = props.listType;
-  //   const [selectedItem, selectItem] = useState(props.data[1][selectedKey]);
-  const [selectedItem, selectItem] = useState();
+import "./SelectableList.css";
+function SelectableList(props) {
+  const [selectedItem, selectItem] = useState(props.default);
   const handleChange = (e) => {
     selectItem(e.target.textContent);
   };
   const listItems = props.data.map((d, i) => (
-    <li className="listItem" onClick={(e) => handleChange(e)} key={i}>
-      {/* {d[selectedKey]} */}
-      {d}
+    <li
+      className={`listItem ${d === props.default ? "selected" : ""}`}
+      onClick={(e) => handleChange(e)}
+      key={i}
+    >
+      <span>{d}</span>
     </li>
   ));
 
@@ -24,4 +25,4 @@ function Selectablelist(props) {
     </div>
   );
 }
-export default Selectablelist;
+export default SelectableList;

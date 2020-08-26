@@ -1,0 +1,22 @@
+.item-list {
+  width: 200px;
+  overflow: auto;
+}
+li.listItem {
+  display: block;
+  padding: 10px 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 3px;
+  color: #147efb;
+}
+li.listItem:hover {
+  background-color: whitesmoke;
+  color: #147efb;
+}
+.selected {
+  background-color: #147efb !important;
+  color: white !important;
+}
