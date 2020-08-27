@@ -36,16 +36,25 @@ function App() {
   const sortedCompanies = Object.entries(groupedCompany).map((e) => e[0]);
   const [selectedCompany, setCompany] = useState(sortedCompanies[0]);
 
-  const [selectedCompanyData, setCompanyData] = useState(
-    companiesInSelectedCity.filter((a) => a.City === selectedCity)[0]
-  );
+  const [selectedCompanyData, setCompanyData] = useState();
+  // companiesInSelectedCity.filter((a) => a.City === selectedCity)[0]
 
   useEffect(() => {
-    let newCountryCompany = companiesInSelectedCity.filter(
+    let newCountryCity = companiesInSelectedCity.filter(
       (a) => a.City === selectedCity
     )[0];
-    if (newCountryCompany) setCompanyData(newCountryCompany);
+    if (newCountryCity) setCompanyData(newCountryCity);
   }, [companiesInSelectedCity, selectedCity]);
+
+  useEffect(() => {
+    let newCountryCity = companiesInSelectedCity.filter(
+      (a) => a.City === selectedCity
+    );
+    let newCompany = newCountryCity.filter(
+      (a) => a.CompanyName === selectedCompany
+    )[0];
+    if (newCompany) setCompanyData(newCompany);
+  }, [companiesInSelectedCity, selectedCompany, selectedCity]);
 
   return (
     <div className="App">
@@ -54,22 +63,22 @@ function App() {
           data={sortedCountries}
           default={selectedCountry}
           getSelection={(country) => setCountry(country)}
-          listType={"Country"}
+          listType={"Countries"}
         />
         <SelectableList
           data={sortedCities}
           default={selectedCity}
           getSelection={(city) => setCity(city)}
-          listType={"City"}
+          listType={"Cities"}
         />
         <SelectableList
           data={sortedCompanies}
           default={selectedCompany}
           getSelection={(company) => setCompany(company)}
-          listType={"CompanyName"}
+          listType={"Company"}
         />
         {!selectedCompanyData && <span>no map data</span>}
-        <MapDisplay details={selectedCompanyData} />
+        <MapDisplay details={selectedCompanyData} listType={"Map"} />
       </div>
     </div>
   );

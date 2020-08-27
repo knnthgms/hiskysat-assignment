@@ -1,0 +1,22 @@
+.infoWindow {
+  display: flex;
+  flex-direction: column;
+}
+.infoWindow-compname {
+  font-weight: 500;
+  font-size: 18px;
+}
+.infoWindow-contname {
+  font-weight: 500;
+  font-size: 15px;
+  color: grey;
+}
+.infoWindow-conttitle {
+  font-size: 13px;
+  opacity: 0.7;
+}
+.infoWindow-contnum {
+  font-size: 13px;
+  color: blue;
+  cursor: pointer;
+}

@@ -1,7 +1,8 @@
 .item-list {
   width: 200px;
   overflow: auto;
-  margin-left: 15px;
+  margin-left: 10px;
+  height: 280px;
 }
 .listItem {
   display: block;
@@ -10,8 +11,9 @@
   white-space: nowrap;
   overflow: hidden;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 4px;
   color: #147efb;
+  margin-right: 2px;
 }
 .listItem:hover {
   background-color: whitesmoke;
@@ -24,5 +26,10 @@
 .title {
   font-size: 22px;
   border-bottom: 1px solid grey;
-  padding: 10px 25px;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+}
+.map-display,
+.map {
+  position: unset !important;
 }
