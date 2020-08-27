@@ -1,6 +1,7 @@
 import React from "react";
 import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 import CountryMap from "../../data/location";
+import { googleMapsApiKey } from "../../data/constants";
 import "./MapDisplay.css";
 
 class MapDisplay extends React.Component {
@@ -9,18 +10,6 @@ class MapDisplay extends React.Component {
     selectedPlace: {},
     showingInfoWindow: false,
   };
-
-  // componentDidUpdate = (props) => {
-  //   let newCountry = props.details.Country;
-  //   const { lat, long } = CountryMap.find((w) => (w.name = newCountry));
-  //   this.setState({
-  //     newCenter: {
-  //       lat,
-  //       long,
-  //     },
-  //   });
-  //   // this.geocodeAddress(this.props.details);
-  // };
 
   onMapClicked = () => {
     if (this.state.showingInfoWindow)
@@ -99,7 +88,7 @@ class MapDisplay extends React.Component {
       .lat;
     const lng = CountryMap.find((w) => w.name === this.props.details.Country)
       .long;
-    console.log(this.props.details.Id);
+
     return (
       <div className="map-display" style={{ width: 500 }}>
         <div className="title">{this.props.listType}</div>
@@ -160,9 +149,7 @@ const containerStyle = {
   height: 500,
 };
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo",
-  // apiKey: "AIzaSyBLkLHCF7Le_IxAmB3DC32eAQIyQ7ERFdM",
-  //   LoadingContainer: LoadingContainer,
+  apiKey: googleMapsApiKey,
   version: 3.31,
   containerStyle: containerStyle,
 })(MapDisplay);
